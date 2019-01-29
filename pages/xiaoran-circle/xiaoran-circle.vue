@@ -5,6 +5,20 @@
 				<icon v-if="percent == 100" type="success" size="60" color="#5cb85c" />
 				<text v-else style="font-size:24px; color: #FFFFFF;">{{ percent }}%</text>
 			</Circle>
+			<Circle :percent="percent" size="200" :stroke-color="color" BgId="BgId" InId="InId">
+				<icon v-if="percent == 100" type="success" size="60" color="#5cb85c" />
+				<text v-else style="font-size:24px; color: #FFFFFF;">{{ percent }}%</text>
+				<view slot="canvas">
+					<canvas
+						class="CanvasBox strokeCanvas"
+						canvas-id="BgId"
+					></canvas>
+					<canvas
+						class="CanvasBox trailCanvas"
+						canvas-id="InId"
+					></canvas>
+				</view>
+			</Circle>
 		</view>
 		<view class="button_box">
 			<button type="primary" class="button_item" @click="add">+</button>

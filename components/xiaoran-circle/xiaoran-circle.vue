@@ -6,14 +6,19 @@
 		}"
 		class="circle_box"
 	>
-		<canvas
-			class="CanvasBox strokeCanvas"
-			canvas-id="BgCanvas"
-		></canvas>
-		<canvas
-			class="CanvasBox trailCanvas"
-			canvas-id="InCanvas"
-		></canvas>
+		<view v-if="!this.BgId && !this.InId">
+			<canvas
+				class="CanvasBox strokeCanvas"
+				canvas-id="BgCanvas"
+			></canvas>
+			<canvas
+				class="CanvasBox trailCanvas"
+				canvas-id="InCanvas"
+			></canvas>
+		</view>
+		<view class="canvas">
+			<slot name="canvas"></slot>
+		</view>
 		<view class="slot">
 			<slot></slot>
 		</view>
@@ -28,6 +33,11 @@
 				// 百分比
 				type: Number,
 				default: 0
+			},
+			prefix: {
+				// 多个圆环情况下的前缀
+				type: String,
+				default: ""
 			},
 			size: {
 				// 图表的宽度和高度，单位 upx
@@ -54,10 +64,15 @@
 				type: String,
 				default: "#eaeef2"
 			},
-			dashboard: {
-				// 仪表盘待定
-				type: Boolean,
-				default: false
+			BgId: {
+				// BgId背景圆环CanvasID
+				type: String,
+				default: "BgCanvas"	
+			},
+			InId: {
+				// IgId进度圆环CanvasID
+				type: String,
+				default: "InCanvas"	
 			}
 		},
 		data() {
@@ -123,7 +138,7 @@
 				setTimeout(this.requestAnimationFrame, 5);
 			},
 			backgroundCircle() {
-				const context = uni.createCanvasContext('BgCanvas');
+				const context = uni.createCanvasContext(this.BgId);
 				// 绘制背景圆环
 				const rad = Math.PI*2/100;
 
@@ -144,7 +159,7 @@
 				context.draw()
 			},
 			foregroundCircle(){
-				const context = uni.createCanvasContext('InCanvas');
+				const context = uni.createCanvasContext(this.InId);
                 context.save();
                 context.setStrokeStyle(this.strokeColor);
 				context.setLineWidth(this.BgWidth); //设置线宽
@@ -164,8 +179,6 @@
 		},
 		watch: {
 			percent(newV, oldV) {
-				console.log(newV);
-				console.log(oldV);
 				if (newV > oldV) {
 					this.type = "add";
 				} else {
