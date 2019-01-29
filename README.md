@@ -132,5 +132,6 @@ props: {
 
 ## 预览图：
 ![preview](https://github.com/FontEndArt/uni-circle/blob/master/preview.jpg?raw=true "preview")
+![单页面引入多个](https://github.com/FontEndArt/uni-circle/blob/master/preview.png?raw=true "单页面引入多个")
 
 [uni-app插件市场](https://ext.dcloud.net.cn/ "uni-app插件市场")
