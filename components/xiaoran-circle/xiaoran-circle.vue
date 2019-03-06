@@ -6,7 +6,7 @@
 		}"
 		class="circle_box"
 	>
-		<view v-if="!this.BgId && !this.InId">
+		<view v-if="!BgId && !InId">
 			<canvas
 				class="CanvasBox strokeCanvas"
 				canvas-id="BgCanvas"
