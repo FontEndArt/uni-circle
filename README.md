@@ -5,6 +5,9 @@
 参考pages/xiaoran-circle/xiaoran-circle.vue引入组件
 组件地址：components/xiaoran-circle/xiaoran-circle.vue
 
+##最新更新
+应[@lcysgsg](https://github.com/lcysgsg "@lcysgsg")的提交 修改了其中template语法问题
+
 ##v1.1更新说明
 ```
 1.经测试官方canvas组件不支持<canvas :canvas-id="cid"></canvas>方式
