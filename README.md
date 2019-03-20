@@ -5,8 +5,17 @@
 参考pages/xiaoran-circle/xiaoran-circle.vue引入组件
 组件地址：components/xiaoran-circle/xiaoran-circle.vue
 
-##最新更新
-应[@lcysgsg](https://github.com/lcysgsg "@lcysgsg")的提交 修改了其中template语法问题
+##下一版本待定
+```
+下一版本打算支持刻度线或者增加圆弧的空白间隔
+```
+
+##v1.2更新说明
+```
+1.修复template语法
+2.调整圆形的绘制方法
+3.增加不封闭的进度环参数
+```
 
 ##v1.1更新说明
 ```
@@ -62,6 +71,16 @@ props: {
 		// IgId进度圆环CanvasID
 		type: String,
 		default: "InCanvas"
+	},
+	dashboard: {
+		// 仪表盘
+		type: Boolean,
+		default: false
+	},
+	start: {
+		// 仪表盘起始角度 -> 和x轴的夹角
+		type: Number,
+		default: 27
 	}
 },
 ```
@@ -72,31 +91,42 @@ props: {
 ··
 ···
 
-
-	<Circle :percent="percent" size="200" :stroke-color="color">
-		<icon v-if="percent == 100" type="success" size="60" color="#5cb85c" />
-		<text v-else style="font-size:24px; color: #FFFFFF;">{{ percent }}%</text>
-	</Circle>
-
-	<Circle :percent="percent" size="200" :stroke-color="color" BgId="BgId" InId="InId">
-		<icon v-if="percent == 100" type="success" size="60" color="#5cb85c" />
-		<text v-else style="font-size:24px; color: #FFFFFF;">{{ percent }}%</text>
-		<view slot="canvas">
-			<canvas
-				class="CanvasBox strokeCanvas"
-				canvas-id="BgId"
-			></canvas>
-			<canvas
-				class="CanvasBox trailCanvas"
-				canvas-id="InId"
-			></canvas>
-		</view>
-	</Circle>
+			<Circle
+				:percent="percent"
+				size="300"
+				:stroke-color="color"
+				stroke-width="20"
+				trail-width="20"
+				dashboard="true"
+			>
+				<icon v-if="percent == 100" type="success" size="60" color="#5cb85c" />
+				<text v-else style="font-size:24px; color: #FFFFFF;">{{ percent }}%</text>
+			</Circle>
+			<Circle
+				:percent="percent"
+				:size="200"
+				:stroke-color="color"
+				BgId="BgId"
+				InId="InId"
+			>
+				<icon v-if="percent == 100" type="success" size="60" color="#5cb85c" />
+				<text v-else style="font-size:24px; color: #FFFFFF;">{{ percent }}%</text>
+				<view slot="canvas">
+					<canvas
+						class="CanvasBox strokeCanvas"
+						canvas-id="BgId"
+					></canvas>
+					<canvas
+						class="CanvasBox trailCanvas"
+						canvas-id="InId"
+					></canvas>
+				</view>
+			</Circle>
 
 ···
 
 <script>
-	import Circle from '@/pages/common/xiaoran-canvas-circle/xiaoran-circle.vue';
+	import Circle from '@/components/xiaoran-circle/xiaoran-circle.vue';
 	export default {
 		components: {
 			Circle
@@ -134,7 +164,7 @@ props: {
 ```
 
 ## 预览图：
-![preview](https://github.com/FontEndArt/uni-circle/blob/master/preview.jpg?raw=true "preview")
-![单页面引入多个](https://github.com/FontEndArt/uni-circle/blob/master/preview.png?raw=true "单页面引入多个")
+![预览图](https://github.com/FontEndArt/uni-circle/blob/master/preview.jpg?raw=true "预览图")
 
 [uni-app插件市场](https://ext.dcloud.net.cn/ "uni-app插件市场")
+

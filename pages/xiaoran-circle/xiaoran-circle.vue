@@ -1,11 +1,24 @@
 <template>
 	<view class="box">
 		<view class="view_box">
-			<Circle :percent="percent" size="200" :stroke-color="color">
+			<Circle
+				:percent="percent"
+				size="300"
+				:stroke-color="color"
+				stroke-width="20"
+				trail-width="20"
+				dashboard="true"
+			>
 				<icon v-if="percent == 100" type="success" size="60" color="#5cb85c" />
 				<text v-else style="font-size:24px; color: #FFFFFF;">{{ percent }}%</text>
 			</Circle>
-			<Circle :percent="percent" size="200" :stroke-color="color" BgId="BgId" InId="InId">
+			<Circle
+				:percent="percent"
+				:size="200"
+				:stroke-color="color"
+				BgId="BgId"
+				InId="InId"
+			>
 				<icon v-if="percent == 100" type="success" size="60" color="#5cb85c" />
 				<text v-else style="font-size:24px; color: #FFFFFF;">{{ percent }}%</text>
 				<view slot="canvas">
@@ -28,7 +41,7 @@
 </template>
 
 <script>
-	import Circle from '@/pages/common/xiaoran-canvas-circle/xiaoran-circle.vue';
+	import Circle from '@/pages/common/xiaoran-canvas-dashboard/xiaoran-circle.vue';
 	export default {
 		components: {
 			Circle
