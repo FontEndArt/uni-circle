@@ -1,18 +1,18 @@
 <template>
 	<view class="box">
 		<view class="view_box">
-			<Circle
+			<iCircle
 				:percent="percent"
-				size="300"
+				:size="300"
 				:stroke-color="color"
-				stroke-width="20"
-				trail-width="20"
-				dashboard="true"
+				:stroke-width="20"
+				:trail-width="20"
+				:dashboard="true"
 			>
 				<icon v-if="percent == 100" type="success" size="60" color="#5cb85c" />
 				<text v-else style="font-size:24px; color: #FFFFFF;">{{ percent }}%</text>
-			</Circle>
-			<Circle
+			</iCircle>
+			<iCircle
 				:percent="percent"
 				:size="200"
 				:stroke-color="color"
@@ -31,7 +31,7 @@
 						canvas-id="InId"
 					></canvas>
 				</view>
-			</Circle>
+			</iCircle>
 		</view>
 		<view class="button_box">
 			<button type="primary" class="button_item" @click="add">+</button>
@@ -41,10 +41,10 @@
 </template>
 
 <script>
-	import Circle from '@/pages/common/xiaoran-canvas-dashboard/xiaoran-circle.vue';
+	import iCircle from '@/components/xiaoran-circle/xiaoran-circle.vue';
 	export default {
 		components: {
-			Circle
+			iCircle
 		},
 		data() {
 			return {
@@ -100,4 +100,15 @@
 		margin-top: 30upx;
 	}
 	
+	.CanvasBox {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
 </style>
