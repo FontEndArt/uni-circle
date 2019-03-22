@@ -10,6 +10,12 @@
 下一版本打算支持刻度线或者增加圆弧的空白间隔
 ```
 
+##v1.3更新说明
+```
+1.修复标签冲突报错
+2.修复部分样式错乱
+```
+
 ##v1.2更新说明
 ```
 1.修复template语法
@@ -91,7 +97,7 @@ props: {
 ··
 ···
 
-			<Circle
+			<iCircle
 				:percent="percent"
 				size="300"
 				:stroke-color="color"
@@ -101,8 +107,8 @@ props: {
 			>
 				<icon v-if="percent == 100" type="success" size="60" color="#5cb85c" />
 				<text v-else style="font-size:24px; color: #FFFFFF;">{{ percent }}%</text>
-			</Circle>
-			<Circle
+			</iCircle>
+			<iCircle
 				:percent="percent"
 				:size="200"
 				:stroke-color="color"
@@ -121,15 +127,15 @@ props: {
 						canvas-id="InId"
 					></canvas>
 				</view>
-			</Circle>
+			</iCircle>
 
 ···
 
 <script>
-	import Circle from '@/components/xiaoran-circle/xiaoran-circle.vue';
+	import iCircle from '@/components/xiaoran-circle/xiaoran-circle.vue';
 	export default {
 		components: {
-			Circle
+			iCircle
 		},
 		data() {
 			return {
@@ -161,6 +167,22 @@ props: {
 		}
 	}
 </scirpt>
+
+<style>
+···
+.CanvasBox {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+···
+</style>
 ```
 
 ## 预览图：

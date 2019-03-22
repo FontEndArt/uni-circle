@@ -159,7 +159,6 @@
 				this.requestAnimationFrame();
 			},
 			requestAnimationFrame() {
-				console.log("requestAnimationFrame");
 				if (this.type == "add") {
 					if (this.selfPercent >= this.percent) {
 						clearTimeout(this.T);
